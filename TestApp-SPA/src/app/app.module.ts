@@ -24,6 +24,9 @@ import { ItemCardComponent } from './items/item-card/item-card.component';
 import { ItemDetailComponent } from './items/item-detail/item-detail.component';
 import { ItemDetailResolver } from './_resolvers/item-detail-resolver';
 import { ItemListResolver } from './_resolvers/item-list-resolver';
+import { ItemEditComponent } from './items/item-edit/item-edit.component';
+import { ItemEditResolver } from './_resolvers/item-edit-resolver';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes-guard';
 
 export function tokenGetter(){
    return localStorage.getItem('token');
@@ -39,7 +42,8 @@ export function tokenGetter(){
       ListsComponent,
       MessagesComponent,
       ItemCardComponent,
-      ItemDetailComponent
+      ItemDetailComponent,
+      ItemEditComponent
    ],
    imports: [
       BrowserModule,
@@ -62,9 +66,11 @@ export function tokenGetter(){
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
+      PreventUnsavedChanges,
       UserService,
       ItemDetailResolver,
-      ItemListResolver
+      ItemListResolver,
+      ItemEditResolver
    ],
    bootstrap: [
       AppComponent
